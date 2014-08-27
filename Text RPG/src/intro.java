@@ -1,7 +1,6 @@
 import java.util.Scanner;
 public class intro {
     basic b1 = new basic();
-
     public void setsName(){
         Scanner aName = new Scanner(System.in);
         System.out.println("Welcome, weary traveler, to the mystical world of Whitt. May I ask your name?");

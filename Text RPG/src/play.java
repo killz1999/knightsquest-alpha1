@@ -10,31 +10,49 @@ public class play {
         int you, it;
         you = 20;
         it = 4;
-        while (it >= 1) {
-            System.out.printf("You: %s hp", you);
-            System.out.printf("Goblin: %s hp", it);
-            System.out.print("Options: Hit it with a stick(1)");
-            String Fight1 = fc.nextLine();
-            if (Fight1.equals("1")) {
-                it -= 2;
-                System.out.println("You hit the Goblin for 2 hp!");
-                System.out.println("The Goblin hits you for 1 hp!");
-                you -= 1;
-            } else {
-                System.out.println("That it not a valid option, please type in a number.");
+        do {
+            if (it == 0) {
+                System.out.printf("You: %sHP", you);
+                System.out.println("");
+                System.out.printf("Goblin: %sHP", it);
+                System.out.println("");
+                System.out.println("You WIN!");
+                it--;
+            }else {
+                System.out.printf("You: %sHP", you);
+                System.out.println("");
+                System.out.printf("Goblin: %sHP", it);
+                System.out.println("");
+                System.out.println("Options:");
+                System.out.println("Hit it with a stick (1)");
+                String option = fc.nextLine();
+                if (option.equals("1")) {
+                    System.out.println("You whack the goblin for 2HP!");
+                    you--;
+                    System.out.println("The goblin slaps you for 1 HP!");
+                    it--;
+                } else {
+                    System.out.println("That is not a valid option");
+                    System.out.println("Please enter a numerical value");
+                }
             }
-        }
-        if (b1.pClass.equals("knight")) {
+        }while (it != -1);
+        System.out.println("");
+        System.out.printf("Congratulations %s you have just killed your first enemy!", b1.name);
+        if (b1.pClass == "knight") {
             b1.wFirst = "Rusty Sword (Dmg: 5)";
-            b1.dFirst = 5;
-        } else if (b1.pClass.equals("wizard")) {
-            b1.wFirst = "Fireball Spell (Dmg: 5)";
-            b1.dFirst = 5;
+            b1.dmg = 5;
+        } else if (b1.pClass == "wizard") {
+            b1.wFirst = "Fireball Spell (Dmg: 3)";
+            b1.dmg = 3;
+            b1.dot = 1;
         } else {
-            b1.wFirst = "Frayed Hand-Me-Down Bow (Dmg: 5)";
-            b1.dFirst = 5;
+            b1.wFirst = "Frayed Hand-Me-Down Bow (Dmg: 6)";
+            b1.dmg = 5;
+            b1.miss = 0.5;
         }
-        System.out.printf("Congratulations! You have beaten your first enemy! You got a %s!", b1.wFirst);
+        System.out.println("");
+        System.out.printf("You got a %s!", b1.wFirst);
     }
 }
 
